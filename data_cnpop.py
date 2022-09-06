@@ -98,7 +98,7 @@ class AudioDataset(Dataset):
         self.path_root = path_root
         self.paths = traverse_dir(
             os.path.join(path_root, 'audio'),
-            extension='wav',
+            extension='flac',
             is_pure=True,
             is_sort=True,
             is_ext=False
@@ -110,7 +110,7 @@ class AudioDataset(Dataset):
 
         # check duration. if too short, then skip
         duration = librosa.get_duration(
-            filename=os.path.join(self.path_root, 'audio', name) + '.wav', 
+            filename=os.path.join(self.path_root, 'audio', name) + '.flac', 
             sr=self.sample_rate)
             
         if duration < (self.waveform_sec + 0.1):
@@ -121,7 +121,7 @@ class AudioDataset(Dataset):
 
     def get_data(self, name, duration):
         # path
-        path_audio = os.path.join(self.path_root, 'audio', name) + '.wav'
+        path_audio = os.path.join(self.path_root, 'audio', name) + '.flac'
         path_mel   = os.path.join(self.path_root, 'mel', name) + '.npy'
 
         # load audio

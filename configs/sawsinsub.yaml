@@ -1,7 +1,7 @@
 data:
-  block_size: 240
+  block_size: 512
   duration: 2
-  sampling_rate: 24000
+  sampling_rate: 44100
   # f1 full
   train_path: /volume/wayne-nas-ai-music/vocoder/ddsp-revised/data/f1/train-full
   valid_path: /volume/wayne-nas-ai-music/vocoder/ddsp-revised/data/f1/val
@@ -26,7 +26,7 @@ loss:
   n_ffts: [1024, 512, 256, 128]
 device: cuda
 env:
-  expdir: exp/f1-full/sawsinsub-256
+  expdir: exp/vpic/sawsinsub-256
   # expdir: exp/m1-full/sawsinsub-256
   # expdir: exp/f1-3min/sawsinsub-256
   # expdir: exp/m1-3min/sawsinsub-256

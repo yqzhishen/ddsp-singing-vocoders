@@ -59,8 +59,8 @@ class Audio2Mel(torch.nn.Module):
         n_mel_channels,
         win_length=1024,
         n_fft=None,
-        mel_fmin=0.0,
-        mel_fmax=None,
+        mel_fmin=55,
+        mel_fmax=8000,
     ):
         super().__init__()
         n_fft = win_length if n_fft is None else n_fft
@@ -169,21 +169,21 @@ if __name__ == '__main__':
     # ==================================================== #
     # configuration
     # ==================================================== #
-    path_rootdir = './data'
+    path_rootdir = r'path_to_data'
     device = 'cuda'
 
-    sampling_rate  = 24000
-    hop_length     = 240
-    win_length     = 1024
+    sampling_rate  = 44100
+    hop_length     = 512
+    win_length     = 2048
     n_mel_channels = 80
 
-    src_ext = 'wav'
+    src_ext = 'flac'
     dst_ext = 'npy'
 
     # ========================== #
     # run
-    for v in ['m1', 'f1']:
-        for s in ['train-full', 'train-3min', 'val', 'test']:
+    for v in ['final']:
+        for s in ['train', 'val']:
             print(f'=== {v} - {s} =============')
             path_srcdir  = os.path.join(path_rootdir, v, s, 'audio')
             path_dstdir  = os.path.join(path_rootdir, v, s, 'mel')
